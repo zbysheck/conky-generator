@@ -1,6 +1,6 @@
 #!/bin/bash
 touch ~/.conkyrc
-echo "conky.config = {\n
+echo "conky.config = {
     alignment = 'top_right',
     background = false,
     border_width = 1,
