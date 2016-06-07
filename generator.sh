@@ -1,5 +1,7 @@
 #!/bin/bash
 touch ~/.conkyrc
+echo "" > ~/.conkyrc
+
 echo "conky.config = {
     alignment = 'top_right',
     background = false,
@@ -32,9 +34,24 @@ echo "conky.config = {
     use_spacer = 'none',
     show_graph_scale = false,
     show_graph_range = false
-}
+}" >> ~/.conkyrc
 
-conky.text = [[
+
+
+czas=false
+
+#ans=$(zenity  --list  --text "Conky Generator" --checklist  --column "Pick" --column "options" FALSE "Zużycie procesora" FALSE "Dostępna pamięć na dysku" FALSE "Zajęta pamięć" FALSE "Zużycie rdzeni procesora" FALSE "Szybkość rdzeni" FALSE "Obciążenie rdzeni" FALSE "Ping" FALSE "Upload" FALSE "Download" FALSE "Obciążenie otwartych aplikacji" FALSE "Dzisiejsza data" FALSE "Aktualna godzina" FALSE "Ilość partycji" FALSE "Obciążenie parycji" FALSE "Stopien naładowania baterii" --separator=":");
+#echo $ansKud
+
+
+if $czas
+	then
+		echo "">> ~/.conkyrc
+fi
+
+
+
+echo "conky.text = [[
 	\${scroll 16 \$nodename - \$sysname \$kernel on \$machine | }
 	\$hr
 	
@@ -66,19 +83,7 @@ conky.text = [[
 	\${color lightgrey} \${top name 3} \${top pid 3} \${top cpu 3} \${top mem 3}
 	\${color lightgrey} \${top name 4} \${top pid 4} \${top cpu 4} \${top mem 4}
 
-]]" > ~/.conkyrc
+]]" >> ~/.conkyrc
 
-#ans=$(zenity  --list  --text "Conky Generator" --checklist  --column "Pick" --column "options" FALSE "Zużycie procesora" FALSE "Dostępna pamięć na dysku" FALSE "Zajęta pamięć" FALSE "Zużycie rdzeni procesora" FALSE "Szybkość rdzeni" FALSE "Obciążenie rdzeni" FALSE "Ping" FALSE "Upload" FALSE "Download" FALSE "Obciążenie otwartych aplikacji" FALSE "Dzisiejsza data" FALSE "Aktualna godzina" FALSE "Ilość partycji" FALSE "Obciążenie parycji" FALSE "Stopien naładowania baterii" --separator=":");
-#echo $ansKud
 
-# Sklejanie linijek:
 
-if  false 
-	then
-		echo "prawdagg" >> ~/.conkyrc
-fi
-
-if  false  
-	then
-		echo "nopegg" >> ~/.conkyrc
-fi
