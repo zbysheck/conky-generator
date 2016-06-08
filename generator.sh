@@ -83,82 +83,39 @@ echo "conky.text = [[\${scroll 16 \$nodename - \$sysname \$kernel on \$machine |
 
 IFS=":" ; for word in $response ; do
     case $word in
-        "Zużycie procesora") echo "XXX" >> ~/.conkyrc
-        "Dostępna pamięć na dysku") echo "XXX" >> ~/.conkyrc
-        "Zajęta pamięć") echo "XXX" >> ~/.conkyrc
-        "Zużycie rdzeni procesora") echo "XXX" >> ~/.conkyrc
-        "Szybkość rdzeni") echo "XXX" >> ~/.conkyrc
-        "Obciążenie rdzeni") echo "XXX" >> ~/.conkyrc
-        "Ping") echo "XXX" >> ~/.conkyrc
-        "Upload") echo "XXX" >> ~/.conkyrc
-        "Download") echo "XXX" >> ~/.conkyrc
-        "Obciążenie otwartych aplikacji") echo "XXX" >> ~/.conkyrc
-        "Dzisiejsza data") echo "XXX" >> ~/.conkyrc
-        "Aktualna godzina") echo "XXX" >> ~/.conkyrc
-        "Ilość partycji") echo "XXX" >> ~/.conkyrc
-        "Obciążenie parycji") echo "XXX" >> ~/.conkyrc
+		"Aktualny czas") echo "\${color grey}Time:\$color \${time %H:%M}" >> ~/.conkyrc
+		
+		"Uptime") echo "\${color grey}Uptime:\$color \$uptime" >> ~/.conkyrc
+   
+
+		"Szybkosc procesora w MHz" echo "\${color grey}Frequency (in MHz):\$color \$freq" >> ~/.conkyrc
+
+        "Szybkosc procesora w GHz" echo "\${color grey}Frequency (in GHz):\$color \$freq_g" >> ~/.conkyrc
+
+        "Zużycie pamięci RAM" echo "\${color grey}RAM Usage:\$color \$mem/\$memmax - \$memperc% \${membar 4}" >> ~/.conkyrc
+
+        "Zużycie pamięci SWAP" echo "\${color grey}Swap Usage:\$color \$swap/\$swapmax - \$swapperc% \${swapbar 4}" >> ~/.conkyrc
+
+        "Zużycie procesora" echo "\${color grey}CPU Usage:\$color \$cpu% \${cpugauge 40}" >> ~/.conkyrc
+
+        "Procesy" echo "\${color grey}Processes:\$color \$processes  \${color grey}Running:\$color \$running_processes 
+       \$hr" >> ~/.conkyrc
+        "Pliki systemowe" echo "\${color grey}File systems:
+        / \$color\${fs_used /}/\${fs_size /} \${fs_bar 4 /}" >> ~/.conkyrc
+ 
+        "Upload i Download" echo "\${color grey}Networking:
+        Up:\$color \${upspeed eth0} \${color grey}  -  Down:\$color \${downspeed eth0}
+        \$hr" >> ~/.conkyrc
+	    "Uruchomione procesy" echo "
+        \${color grey}Name              PID   CPU%   MEM%
+        \${color lightgrey} \${top name 1} \${top pid 1} \${top cpu 1} \${top mem 1}
+        \${color lightgrey} \${top name 2} \${top pid 2} \${top cpu 2} \${top mem 2}
+        \${color lightgrey} \${top name 3} \${top pid 3} \${top cpu 3} \${top mem 3}
+        \${color lightgrey} \${top name 4} \${top pid 4} \${top cpu 4} \${top mem 4}" >> ~/.conkyrc
+ 
+echo "]]">> ~/.conkyrc
    esac
-done
-
-
-if $time
-	then
-		echo "\${color grey}Time:\$color \${time %H:%M}">> ~/.conkyrc
-fi
-
-if $uptime
-	then
-		echo "\${color grey}Uptime:\$color \$uptime">> ~/.conkyrc
-fi
-
-if $frequencyMhz
-	then
-		echo "">> ~/.conkyrc
-fi
-
-if $frequencyGhz
-	then
-		echo "">> ~/.conkyrc
-fi
-
-if $ramUsage
-	then
-		echo "">> ~/.conkyrc
-fi
-
-if $swapUsage
-	then
-		echo "">> ~/.conkyrc
-fi
-
-if $cpuUsage
-	then
-		echo "">> ~/.conkyrc
-fi
-
-if $processesRunning
-	then
-		echo "">> ~/.conkyrc
-fi
-
-if $fileSystems
-	then
-		echo "">> ~/.conkyrc
-fi
-
-if $networking
-	then
-		echo "">> ~/.conkyrc
-fi
-
-if $singleProcesses
-	then
-		echo "">> ~/.conkyrc
-fi
-
-echo "]]" >> ~/.conkyrc
-
-
+done 
 
 
 
