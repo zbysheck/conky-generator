@@ -84,29 +84,18 @@ echo "conky.text = [[\${scroll 16 \$nodename - \$sysname \$kernel on \$machine |
 IFS=":" ; for word in $response ; do
     case $word in
 		"Aktualny czas") echo "\${color grey}Time:\$color \${time %H:%M}" >> ~/.conkyrc
-		
 		"Uptime") echo "\${color grey}Uptime:\$color \$uptime" >> ~/.conkyrc
-   
-
-		"Szybkosc procesora w MHz" echo "\${color grey}Frequency (in MHz):\$color \$freq" >> ~/.conkyrc
-
-        "Szybkosc procesora w GHz" echo "\${color grey}Frequency (in GHz):\$color \$freq_g" >> ~/.conkyrc
-
-        "Zużycie pamięci RAM" echo "\${color grey}RAM Usage:\$color \$mem/\$memmax - \$memperc% \${membar 4}" >> ~/.conkyrc
-
-        "Zużycie pamięci SWAP" echo "\${color grey}Swap Usage:\$color \$swap/\$swapmax - \$swapperc% \${swapbar 4}" >> ~/.conkyrc
-
-        "Zużycie procesora" echo "\${color grey}CPU Usage:\$color \$cpu% \${cpugauge 40}" >> ~/.conkyrc
-
-        "Procesy" echo "\${color grey}Processes:\$color \$processes  \${color grey}Running:\$color \$running_processes 
-       \$hr" >> ~/.conkyrc
-        "Pliki systemowe" echo "\${color grey}File systems:
-        / \$color\${fs_used /}/\${fs_size /} \${fs_bar 4 /}" >> ~/.conkyrc
- 
-        "Upload i Download" echo "\${color grey}Networking:
+		"Szybkosc procesora w MHz") echo "\${color grey}Frequency (in MHz):\$color \$freq" >> ~/.conkyrc
+        "Szybkosc procesora w GHz") echo "\${color grey}Frequency (in GHz):\$color \$freq_g" >> ~/.conkyrc
+        "Zużycie pamięci RAM") echo "\${color grey}RAM Usage:\$color \$mem/\$memmax - \$memperc% \${membar 4}" >> ~/.conkyrc
+        "Zużycie pamięci SWAP") echo "\${color grey}Swap Usage:\$color \$swap/\$swapmax - \$swapperc% \${swapbar 4}" >> ~/.conkyrc
+        "Zużycie procesora") echo "\${color grey}CPU Usage:\$color \$cpu% \${cpugauge 40}" >> ~/.conkyrc
+        "Procesy") echo "\${color grey}Processes:\$color \$processes  \${color grey}Running:\$color \$running_processes \$hr" >> ~/.conkyrc
+        "Pliki systemowe") echo "\${color grey}File systems: / \$color\${fs_used /}/\${fs_size /} \${fs_bar 4 /}" >> ~/.conkyrc
+        "Upload i Download") echo "\${color grey}Networking:
         Up:\$color \${upspeed eth0} \${color grey}  -  Down:\$color \${downspeed eth0}
         \$hr" >> ~/.conkyrc
-	    "Uruchomione procesy" echo "
+	    "Uruchomione procesy") echo "
         \${color grey}Name              PID   CPU%   MEM%
         \${color lightgrey} \${top name 1} \${top pid 1} \${top cpu 1} \${top mem 1}
         \${color lightgrey} \${top name 2} \${top pid 2} \${top cpu 2} \${top mem 2}
