@@ -75,37 +75,35 @@ singleProcesses=false
 
 
 
-ans=$(zenity  --list  --text "Conky Generator" --checklist  --column "Pick" --column "options" FALSE "Zużycie procesora" FALSE "Dostępna pamięć na dysku" FALSE "Zajęta pamięć" FALSE "Zużycie rdzeni procesora" FALSE "Szybkość rdzeni" FALSE "Obciążenie rdzeni" FALSE "Ping" FALSE "Upload" FALSE "Download" FALSE "Obciążenie otwartych aplikacji" FALSE "Dzisiejsza data" FALSE "Aktualna godzina" FALSE "Ilość partycji" FALSE "Obciążenie parycji" FALSE "Stopien naładowania baterii" --separator=":");
-%echo $ans
+ans=$(zenity  --list  --text "Conky Generator" --checklist --column "Pick" --column "options" FALSE "Aktualny czas" FALSE "Uptime" FALSE "Szybkosc procesora w MHz" FALSE "Szybkosc procesora w GHz" FALSE "Zużycie pamięci RAM" FALSE "Zużycie pamięci SWAP" FALSE "Zużycie procesora" FALSE "Procesy" FALSE "Pliki systemowe" FALSE "Upload i Download" FALSE "Uruchomione procesy" --separator=":");
+echo $ans
 
 echo "conky.text = [[\${scroll 16 \$nodename - \$sysname \$kernel on \$machine | }
     \$hr">> ~/.conkyrc
 
-IFS=":" ; for word in $response ; do
+IFS=":" ; for word in $ans ; do
     case $word in
-		"Aktualny czas") echo "\${color grey}Time:\$color \${time %H:%M}" >> ~/.conkyrc
-		"Uptime") echo "\${color grey}Uptime:\$color \$uptime" >> ~/.conkyrc
-		"Szybkosc procesora w MHz") echo "\${color grey}Frequency (in MHz):\$color \$freq" >> ~/.conkyrc
-        "Szybkosc procesora w GHz") echo "\${color grey}Frequency (in GHz):\$color \$freq_g" >> ~/.conkyrc
-        "Zużycie pamięci RAM") echo "\${color grey}RAM Usage:\$color \$mem/\$memmax - \$memperc% \${membar 4}" >> ~/.conkyrc
-        "Zużycie pamięci SWAP") echo "\${color grey}Swap Usage:\$color \$swap/\$swapmax - \$swapperc% \${swapbar 4}" >> ~/.conkyrc
-        "Zużycie procesora") echo "\${color grey}CPU Usage:\$color \$cpu% \${cpugauge 40}" >> ~/.conkyrc
-        "Procesy") echo "\${color grey}Processes:\$color \$processes  \${color grey}Running:\$color \$running_processes \$hr" >> ~/.conkyrc
-        "Pliki systemowe") echo "\${color grey}File systems: / \$color\${fs_used /}/\${fs_size /} \${fs_bar 4 /}" >> ~/.conkyrc
+		"Aktualny czas") echo "\${color grey}Time:\$color \${time %H:%M}" >> ~/.conkyrc ;;
+		"Uptime") echo "\${color grey}Uptime:\$color \$uptime" >> ~/.conkyrc ;;
+		"Szybkosc procesora w MHz") echo "\${color grey}Frequency (in MHz):\$color \$freq" >> ~/.conkyrc ;;
+        "Szybkosc procesora w GHz") echo "\${color grey}Frequency (in GHz):\$color \$freq_g" >> ~/.conkyrc ;;
+        "Zużycie pamięci RAM") echo "\${color grey}RAM Usage:\$color \$mem/\$memmax - \$memperc% \${membar 4}" >> ~/.conkyrc ;;
+        "Zużycie pamięci SWAP") echo "\${color grey}Swap Usage:\$color \$swap/\$swapmax - \$swapperc% \${swapbar 4}" >> ~/.conkyrc ;;
+        "Zużycie procesora") echo "\${color grey}CPU Usage:\$color \$cpu% \${cpugauge 40}" >> ~/.conkyrc ;;
+        "Procesy") echo "\${color grey}Processes:\$color \$processes  \${color grey}Running:\$color \$running_processes \$hr" >> ~/.conkyrc ;;
+        "Pliki systemowe") echo "\${color grey}File systems: / \$color\${fs_used /}/\${fs_size /} \${fs_bar 4 /}" >> ~/.conkyrc ;;
         "Upload i Download") echo "\${color grey}Networking:
         Up:\$color \${upspeed eth0} \${color grey}  -  Down:\$color \${downspeed eth0}
-        \$hr" >> ~/.conkyrc
+        \$hr" >> ~/.conkyrc ;;
 	    "Uruchomione procesy") echo "
         \${color grey}Name              PID   CPU%   MEM%
         \${color lightgrey} \${top name 1} \${top pid 1} \${top cpu 1} \${top mem 1}
         \${color lightgrey} \${top name 2} \${top pid 2} \${top cpu 2} \${top mem 2}
         \${color lightgrey} \${top name 3} \${top pid 3} \${top cpu 3} \${top mem 3}
-        \${color lightgrey} \${top name 4} \${top pid 4} \${top cpu 4} \${top mem 4}" >> ~/.conkyrc
- 
-echo "]]">> ~/.conkyrc
+        \${color lightgrey} \${top name 4} \${top pid 4} \${top cpu 4} \${top mem 4}" >> ~/.conkyrc ;;
    esac
 done 
-
+echo "]]">> ~/.conkyrc
 
 
 
