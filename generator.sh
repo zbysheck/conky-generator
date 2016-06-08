@@ -75,11 +75,32 @@ singleProcesses=false
 
 
 
-#ans=$(zenity  --list  --text "Conky Generator" --checklist  --column "Pick" --column "options" FALSE "Zużycie procesora" FALSE "Dostępna pamięć na dysku" FALSE "Zajęta pamięć" FALSE "Zużycie rdzeni procesora" FALSE "Szybkość rdzeni" FALSE "Obciążenie rdzeni" FALSE "Ping" FALSE "Upload" FALSE "Download" FALSE "Obciążenie otwartych aplikacji" FALSE "Dzisiejsza data" FALSE "Aktualna godzina" FALSE "Ilość partycji" FALSE "Obciążenie parycji" FALSE "Stopien naładowania baterii" --separator=":");
-#echo $ans
+ans=$(zenity  --list  --text "Conky Generator" --checklist  --column "Pick" --column "options" FALSE "Zużycie procesora" FALSE "Dostępna pamięć na dysku" FALSE "Zajęta pamięć" FALSE "Zużycie rdzeni procesora" FALSE "Szybkość rdzeni" FALSE "Obciążenie rdzeni" FALSE "Ping" FALSE "Upload" FALSE "Download" FALSE "Obciążenie otwartych aplikacji" FALSE "Dzisiejsza data" FALSE "Aktualna godzina" FALSE "Ilość partycji" FALSE "Obciążenie parycji" FALSE "Stopien naładowania baterii" --separator=":");
+%echo $ans
 
 echo "conky.text = [[\${scroll 16 \$nodename - \$sysname \$kernel on \$machine | }
-	\$hr">> ~/.conkyrc
+    \$hr">> ~/.conkyrc
+
+IFS=":" ; for word in $response ; do
+    case $word in
+        "Zużycie procesora") echo "XXX" >> ~/.conkyrc
+        "Dostępna pamięć na dysku") echo "XXX" >> ~/.conkyrc
+        "Zajęta pamięć") echo "XXX" >> ~/.conkyrc
+        "Zużycie rdzeni procesora") echo "XXX" >> ~/.conkyrc
+        "Szybkość rdzeni") echo "XXX" >> ~/.conkyrc
+        "Obciążenie rdzeni") echo "XXX" >> ~/.conkyrc
+        "Ping") echo "XXX" >> ~/.conkyrc
+        "Upload") echo "XXX" >> ~/.conkyrc
+        "Download") echo "XXX" >> ~/.conkyrc
+        "Obciążenie otwartych aplikacji") echo "XXX" >> ~/.conkyrc
+        "Dzisiejsza data") echo "XXX" >> ~/.conkyrc
+        "Aktualna godzina") echo "XXX" >> ~/.conkyrc
+        "Ilość partycji") echo "XXX" >> ~/.conkyrc
+        "Obciążenie parycji") echo "XXX" >> ~/.conkyrc
+   esac
+done
+
+
 if $time
 	then
 		echo "\${color grey}Time:\$color \${time %H:%M}">> ~/.conkyrc
