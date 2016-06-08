@@ -38,17 +38,78 @@ echo "conky.config = {
 
 
 
-czas=false
+time=false
+uptime=false
+frequencyMhz=false
+frequencyGhz=false
+ramUsage=false
+swapUsage=false
+cpuUsage=false
+processesRunning=false
+fileSystems=false
+networking=false
+singleProcesses=false
+
+
 
 #ans=$(zenity  --list  --text "Conky Generator" --checklist  --column "Pick" --column "options" FALSE "Zużycie procesora" FALSE "Dostępna pamięć na dysku" FALSE "Zajęta pamięć" FALSE "Zużycie rdzeni procesora" FALSE "Szybkość rdzeni" FALSE "Obciążenie rdzeni" FALSE "Ping" FALSE "Upload" FALSE "Download" FALSE "Obciążenie otwartych aplikacji" FALSE "Dzisiejsza data" FALSE "Aktualna godzina" FALSE "Ilość partycji" FALSE "Obciążenie parycji" FALSE "Stopien naładowania baterii" --separator=":");
 #echo $ansKud
 
 
-if $czas
+if $time
 	then
 		echo "">> ~/.conkyrc
 fi
 
+if $uptime
+	then
+		echo "">> ~/.conkyrc
+fi
+
+if $frequencyMhz
+	then
+		echo "">> ~/.conkyrc
+fi
+
+if $frequencyGhz
+	then
+		echo "">> ~/.conkyrc
+fi
+
+if $ramUsage
+	then
+		echo "">> ~/.conkyrc
+fi
+
+if $swapUsage
+	then
+		echo "">> ~/.conkyrc
+fi
+
+if $cpuUsage
+	then
+		echo "">> ~/.conkyrc
+fi
+
+if $processesRunning
+	then
+		echo "">> ~/.conkyrc
+fi
+
+if $fileSystems
+	then
+		echo "">> ~/.conkyrc
+fi
+
+if $networking
+	then
+		echo "">> ~/.conkyrc
+fi
+
+if $singleProcesses
+	then
+		echo "">> ~/.conkyrc
+fi
 
 
 echo "conky.text = [[
