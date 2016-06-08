@@ -1,2 +1,2 @@
 # conky-generator
-bardzo fajny program
+bardzo fajny program!
