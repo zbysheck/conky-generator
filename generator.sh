@@ -4,10 +4,6 @@
 
 while getopts "a v h" opt; do
   case $opt in
-	a)
-		echo "kek" >&2
-		exit 1
-		;;
     v)
 		echo "Conky Generator v1.0" >&2     
      	exit 1
@@ -23,10 +19,25 @@ while getopts "a v h" opt; do
 done
 
 touch ~/.conkyrc
-echo "" > ~/.conkyrc
+echo "" > ~/.conkyrc   #RESET
 
-echo "conky.config = {
-    alignment = 'top_right',
+
+
+echo "conky.config = {" >> ~/.conkyrc
+ans=$(zenity --height 200 --list  --text "Choose a corner" --radiolist  --column "Pick" --column "Opinion" FALSE "Top left" FALSE "Top right" FALSE "Bottom right" FALSE "Bottom left");
+echo $ans
+
+
+IFS=":" ; for word in $ans ; do
+	case $word in
+		"Top left") echo "alignment = 'top_left'," >> ~/.conkyrc ;;
+		"Top right") echo "alignment = 'top_right'," >> ~/.conkyrc ;;
+		"Bottom right") echo "alignment = 'bottom_right'," >> ~/.conkyrc ;;
+		"Bottom left") echo "alignment = 'bottom_left'," >> ~/.conkyrc ;;
+	esac
+done 
+
+echo "  
     background = false,
     border_width = 1,
     cpu_avg_samples = 2,
@@ -75,7 +86,7 @@ singleProcesses=false
 
 
 
-ans=$(zenity  --list  --text "Conky Generator" --checklist --column "Pick" --column "options" FALSE "Aktualny czas" FALSE "Uptime" FALSE "Szybkosc procesora w MHz" FALSE "Szybkosc procesora w GHz" FALSE "Zużycie pamięci RAM" FALSE "Zużycie pamięci SWAP" FALSE "Zużycie procesora" FALSE "Procesy" FALSE "Pliki systemowe" FALSE "Upload i Download" FALSE "Uruchomione procesy" --separator=":");
+ans=$(zenity --width 500 --height 350  --list  --text "Conky Generator" --checklist --column "Pick" --column "options" FALSE "Aktualny czas" FALSE "Uptime" FALSE "Szybkosc procesora w MHz" FALSE "Szybkosc procesora w GHz" FALSE "Zużycie pamięci RAM" FALSE "Zużycie pamięci SWAP" FALSE "Zużycie procesora" FALSE "Procesy" FALSE "Pliki systemowe" FALSE "Upload i Download" FALSE "Uruchomione procesy" --separator=":");
 echo $ans
 
 echo "conky.text = [[\${scroll 16 \$nodename - \$sysname \$kernel on \$machine | }
@@ -92,9 +103,8 @@ IFS=":" ; for word in $ans ; do
         "Zużycie procesora") echo "\${color grey}CPU Usage:\$color \$cpu% \${cpugauge 40}" >> ~/.conkyrc ;;
         "Procesy") echo "\${color grey}Processes:\$color \$processes  \${color grey}Running:\$color \$running_processes \$hr" >> ~/.conkyrc ;;
         "Pliki systemowe") echo "\${color grey}File systems: / \$color\${fs_used /}/\${fs_size /} \${fs_bar 4 /}" >> ~/.conkyrc ;;
-        "Upload i Download") echo "\${color grey}Networking:
-        Up:\$color \${upspeed eth0} \${color grey}  -  Down:\$color \${downspeed eth0}
-        \$hr" >> ~/.conkyrc ;;
+        "Upload i Download") echo "\${color lightgrey}Networking:
+ Down:\${color #8844ee} \${downspeed eth0} k/s\${color lightgrey} \${offset 70}Up:\${color #22ccff} \${upspeed eth0} k/s" >> ~/.conkyrc ;;
 	    "Uruchomione procesy") echo "
         \${color grey}Name              PID   CPU%   MEM%
         \${color lightgrey} \${top name 1} \${top pid 1} \${top cpu 1} \${top mem 1}
