@@ -63,19 +63,22 @@ ans=$(zenity --list \
 echo $ans
 
 	case $ans in
-		"Monospace Regular") echo "font = 'Monospace Regular:size=12'," >> ~/.conkyrc ;;
-		"NanunBraunGothic Regular") echo "font = 'NanunBraunGothic Regular:size=12'," >> ~/.conkyrc ;;
-		"Ubuntu Regular") echo "font = 'Ubuntu Regular:size=12'," >> ~/.conkyrc ;;
-		"NanunGothic Regular") echo "font = 'NanunGothic Regular:size=12'," >> ~/.conkyrc ;;
-	"NanumMyeongjo Regular") echo "font = 'NanumMyeongjo Regular:size=12'," >> ~/.conkyrc ;;
-	"Nimbus Mono L Regular") echo "font = 'Nimbus Mono L Regular:size=12'," >> ~/.conkyrc ;;
-	"Norasi Regular") echo "font = 'Norasi Regular:size=12'," >> ~/.conkyrc ;;
-	"Noto Sans CJK SC Black") echo "font = 'Noto Sans CJK SC Black:size=12'," >> ~/.conkyrc ;;
-	"DejaVu Sans Mono12") echo "font = 'DejaVu Sans Mono12:size=12'," >> ~/.conkyrc ;;
+		"1") echo "font = 'Monospace Regular:size=12'," >> ~/.conkyrc ;;
+		"2") echo "font = 'NanunBraunGothic Regular:size=12'," >> ~/.conkyrc ;;
+		"3") echo "font = 'Ubuntu Regular:size=12'," >> ~/.conkyrc ;;
+		"4") echo "font = 'NanunGothic Regular:size=12'," >> ~/.conkyrc ;;
+		"5") echo "font = 'NanumMyeongjo Regular:size=12'," >> ~/.conkyrc ;;
+		"6") echo "font = 'Nimbus Mono L Regular:size=12'," >> ~/.conkyrc ;;
+		"7") echo "font = 'Norasi Regular:size=12'," >> ~/.conkyrc ;;
+		"8") echo "font = 'Noto Sans CJK SC Black:size=12'," >> ~/.conkyrc ;;
+		"9") echo "font = 'DejaVu Sans Mono12:size=12'," >> ~/.conkyrc ;;
 	esac
  
 
 echo "  
+	own_window_colour = "black",
+	own_window_transparent = "yes",
+	
     background = false,
     border_width = 1,
     cpu_avg_samples = 2,
