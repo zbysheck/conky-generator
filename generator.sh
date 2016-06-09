@@ -46,17 +46,34 @@ IFS=":" ; for word in $ans ; do
 	esac
 done 
 
-zenity --list \
-	  --title="Wybierz czcionke" \
-	  --column="OS" --column="Interface" \
-	  Ubuntu Unity \
-	  "OS X" Marble \
-	  FreeBSD "Command line" \
-	  Fedora GNOME \
-	  Minix Command_line \
-	  Pidora XFCE \
-	  Lubuntu LXDE \
-	  "MS-Windows" Metro
+ans=$(zenity --list \
+	--width 300 \
+	--height 300 \
+	--title="Wybierz czcionke" \
+	--column="ID" --column="Czcionka" \
+	1 "Monospace Regular" \
+	2 "NanunBraunGothic Regular" \
+	3 "Ubuntu Regular" \
+	4 "NanunGothic Regular" \
+	5 "NanumMyeongjo Regular" \
+	6 "Nimbus Mono L Regular" \
+	7 "Norasi Regular" \
+	8 "Noto Sans CJK SC Black" \
+	9 "DejaVu Sans Mono12"); 
+echo $ans
+
+	case $ans in
+		"Monospace Regular") echo "font = 'Monospace Regular:size=12'," >> ~/.conkyrc ;;
+		"NanunBraunGothic Regular") echo "font = 'NanunBraunGothic Regular:size=12'," >> ~/.conkyrc ;;
+		"Ubuntu Regular") echo "font = 'Ubuntu Regular:size=12'," >> ~/.conkyrc ;;
+		"NanunGothic Regular") echo "font = 'NanunGothic Regular:size=12'," >> ~/.conkyrc ;;
+	"NanumMyeongjo Regular") echo "font = 'NanumMyeongjo Regular:size=12'," >> ~/.conkyrc ;;
+	"Nimbus Mono L Regular") echo "font = 'Nimbus Mono L Regular:size=12'," >> ~/.conkyrc ;;
+	"Norasi Regular") echo "font = 'Norasi Regular:size=12'," >> ~/.conkyrc ;;
+	"Noto Sans CJK SC Black") echo "font = 'Noto Sans CJK SC Black:size=12'," >> ~/.conkyrc ;;
+	"DejaVu Sans Mono12") echo "font = 'DejaVu Sans Mono12:size=12'," >> ~/.conkyrc ;;
+	esac
+ 
 
 echo "  
     background = false,
@@ -70,7 +87,6 @@ echo "
     draw_outline = false,
     draw_shades = false,
     use_xft = true,
-    font = 'DejaVu Sans Mono:size=12',
     gap_x = 5,
     gap_y = 60,
     minimum_height = 5,
@@ -137,6 +153,7 @@ IFS=":" ; for word in $ans ; do
         \${color lightgrey} \${top name 4} \${top pid 4} \${top cpu 4} \${top mem 4}" >> ~/.conkyrc ;;
    esac
 done 
+
 echo "]]">> ~/.conkyrc
 
 
