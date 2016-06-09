@@ -92,22 +92,25 @@ echo "
 }" >> ~/.conkyrc
 
 
-
-time=true
-uptime=true
-frequencyMhz=false
-frequencyGhz=false
-ramUsage=false
-swapUsage=false
-cpuUsage=false
-processesRunning=false
-fileSystems=false
-networking=false
-singleProcesses=false
-
-
-
-ans=$(zenity --width 500 --height 350  --list  --text "Conky Generator" --checklist --column "Pick" --column "options" FALSE "Aktualny czas" FALSE "Uptime" FALSE "Szybkosc procesora w MHz" FALSE "Szybkosc procesora w GHz" FALSE "Zużycie pamięci RAM" FALSE "Zużycie pamięci SWAP" FALSE "Zużycie procesora" FALSE "Procesy" FALSE "Pliki systemowe" FALSE "Upload i Download" FALSE "Uruchomione procesy" --separator=":");
+ans=$(zenity --width 500 \
+	--height 350  \
+	--list  \
+	--text "Conky Generator" \
+	--checklist \
+	--column "Pick" \
+	--column "options" \
+	FALSE "Aktualny czas" \
+	FALSE "Uptime" \
+	FALSE "Szybkosc procesora w MHz" \
+	FALSE "Szybkosc procesora w GHz" \
+	FALSE "Zużycie pamięci RAM" \
+	FALSE "Zużycie pamięci SWAP" \
+	FALSE "Zużycie procesora" \
+	FALSE "Procesy" \
+	FALSE "Pliki systemowe" \
+	FALSE "Upload i Download" \
+	FALSE "Uruchomione procesy" \
+	--separator=":");
 echo $ans
 
 echo "conky.text = [[\${scroll 16 \$nodename - \$sysname \$kernel on \$machine | }
