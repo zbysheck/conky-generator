@@ -24,7 +24,16 @@ echo "" > ~/.conkyrc   #RESET
 
 
 echo "conky.config = {" >> ~/.conkyrc
-ans=$(zenity --height 200 --list  --text "Choose a corner" --radiolist  --column "Pick" --column "Opinion" FALSE "Top left" FALSE "Top right" FALSE "Bottom right" FALSE "Bottom left");
+ans=$(zenity --height 200 \
+	--list \
+ 	--text "Wybierz róg" \
+ 	--radiolist \
+ 	--column "Pick" \
+	 --column "Opinion" \
+ 	FALSE "Top left" \
+ 	FALSE "Top right" \
+ 	FALSE "Bottom right" \
+ 	FALSE "Bottom left");
 echo $ans
 
 
@@ -36,6 +45,18 @@ IFS=":" ; for word in $ans ; do
 		"Bottom left") echo "alignment = 'bottom_left'," >> ~/.conkyrc ;;
 	esac
 done 
+
+zenity --list \
+	  --title="Wybierz czcionke" \
+	  --column="OS" --column="Interface" \
+	  Ubuntu Unity \
+	  "OS X" Marble \
+	  FreeBSD "Command line" \
+	  Fedora GNOME \
+	  Minix Command_line \
+	  Pidora XFCE \
+	  Lubuntu LXDE \
+	  "MS-Windows" Metro
 
 echo "  
     background = false,
